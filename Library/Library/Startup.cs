@@ -29,6 +29,7 @@ namespace Library
             services.AddDbContext<Data.LibraryContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("LibraryContextConnection")));
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<Data.LibraryContext>();
                     
             services.AddControllersWithViews();

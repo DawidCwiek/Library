@@ -1,4 +1,5 @@
-﻿using Library.Data;
+﻿using Library.Areas.Identity.Data;
+using Library.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -34,8 +35,6 @@ namespace Library.Models
 
                     context.SaveChanges();
                 }
-
-               
             }
         }
     }

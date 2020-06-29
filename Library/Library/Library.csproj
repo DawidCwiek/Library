@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20200629120250_Book.Designer.cs" />
     <Compile Remove="Migrations\20200629122053_Book.cs" />
     <Compile Remove="Migrations\20200629122053_Book.Designer.cs" />
+    <Compile Remove="Migrations\20200629143217_add admin.cs" />
+    <Compile Remove="Migrations\20200629143217_add admin.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

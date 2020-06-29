@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Library.Models.Book>
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,46 +10,63 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+    @using (Html.BeginForm())
+    {
+<div class="input-group mb-3">
+    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Title" })
+    <div class="input-group-append">
+        <input class="btn btn-outline-secondary" type="submit" value="Search" />
+    </div>
+</div>
+            }
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishingHouse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishingHouse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishingHouse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishingHouse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        <div class="row">
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a><span> | </span>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a><span> | </span>
+                            }
+
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
