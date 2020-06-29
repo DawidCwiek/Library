@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Library.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Library.Areas.Identity.Data
@@ -30,5 +31,6 @@ namespace Library.Areas.Identity.Data
         [Column(TypeName = "nvarchar(10)")]
         public string ZipCode { get; set; }
 
+        public List<Borrowing> Borrowing { get; set; }
     }
 }
