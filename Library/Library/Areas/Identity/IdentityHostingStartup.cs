@@ -15,14 +15,7 @@ namespace Library.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
-                services.AddDbContext<LibraryContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("LibraryContextConnection")));
-
-                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                    .AddEntityFrameworkStores<LibraryContext>();
-            });
+            builder.ConfigureServices((services) => {});
         }
     }
 }

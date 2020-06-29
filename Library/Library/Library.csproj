@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200629120007_Book.cs" />
+    <Compile Remove="Migrations\20200629120007_Book.Designer.cs" />
+    <Compile Remove="Migrations\20200629120250_Book.cs" />
+    <Compile Remove="Migrations\20200629120250_Book.Designer.cs" />
+    <Compile Remove="Migrations\20200629122053_Book.cs" />
+    <Compile Remove="Migrations\20200629122053_Book.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
