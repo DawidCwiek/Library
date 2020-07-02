@@ -30,6 +30,14 @@ namespace Library.Models
                             PublishingHouse = "Jakieś wydawnictwo",
                             ReleaseDate = DateTime.Parse("1989-2-12"),
 
+                        },
+                        new Book
+                        {
+                            Title = "2137 dlaczego tak popularne?",
+                            Author = "Jakiś autor",
+                            PublishingHouse = "Jakieś wydawnictwo",
+                            ReleaseDate = DateTime.Parse("2005-2-12"),
+
                         }
                     );
 

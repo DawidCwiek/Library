@@ -48,10 +48,9 @@ namespace Library.Data
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID
             });
-
-            builder.Entity<Borrowing>()
-                .HasKey(b => new { b.BookId, b.ApplicationUserId });
         }
+
+           
 
         public DbSet<Book> Book { get; set; }
         public DbSet<Borrowing> Borrowing { get; set; }

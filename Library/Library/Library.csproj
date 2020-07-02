@@ -13,6 +13,14 @@
     <Compile Remove="Migrations\20200629122053_Book.Designer.cs" />
     <Compile Remove="Migrations\20200629143217_add admin.cs" />
     <Compile Remove="Migrations\20200629143217_add admin.Designer.cs" />
+    <Compile Remove="Migrations\20200702212449_fix borrowing.cs" />
+    <Compile Remove="Migrations\20200702212449_fix borrowing.Designer.cs" />
+    <Compile Remove="Migrations\20200702215342_fix borrowing.cs" />
+    <Compile Remove="Migrations\20200702215342_fix borrowing.Designer.cs" />
+    <Compile Remove="Migrations\20200702220540_fix borrowing.cs" />
+    <Compile Remove="Migrations\20200702220540_fix borrowing.Designer.cs" />
+    <Compile Remove="Migrations\20200702221242_fix borrowing.cs" />
+    <Compile Remove="Migrations\20200702221242_fix borrowing.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
