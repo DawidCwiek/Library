@@ -85,7 +85,7 @@ namespace Library.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate,EndDate, Description")] Borrowing borrowing)
+        public async Task<IActionResult> Create([Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate, Description")] Borrowing borrowing)
         {
             if (ModelState.IsValid)
             {
