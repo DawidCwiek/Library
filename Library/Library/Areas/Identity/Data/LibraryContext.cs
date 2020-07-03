@@ -65,5 +65,6 @@ namespace Library.Data
         public DbSet<Book> Book { get; set; }
         public DbSet<Borrowing> Borrowing { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Invoice> Invoice { get; set; }
     }
 }
