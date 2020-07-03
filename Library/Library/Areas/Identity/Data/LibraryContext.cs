@@ -48,6 +48,16 @@ namespace Library.Data
                 RoleId = ROLE_ID,
                 UserId = ADMIN_ID
             });
+
+            builder.Entity<Borrowing>()
+             .HasOne(sa => sa.ApplicationUser)
+             .WithMany(a => a.Borrowing)
+             .HasForeignKey(sa => sa.ApplicationUserId);
+
+            builder.Entity<Borrowing>()
+             .HasOne(sa => sa.Book)
+             .WithMany(a => a.Borrowing)
+             .HasForeignKey(sa => sa.BookId);
         }
 
            

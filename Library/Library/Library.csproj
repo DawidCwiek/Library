@@ -21,6 +21,10 @@
     <Compile Remove="Migrations\20200702220540_fix borrowing.Designer.cs" />
     <Compile Remove="Migrations\20200702221242_fix borrowing.cs" />
     <Compile Remove="Migrations\20200702221242_fix borrowing.Designer.cs" />
+    <Compile Remove="Migrations\20200703111320_fix relationship.cs" />
+    <Compile Remove="Migrations\20200703111320_fix relationship.Designer.cs" />
+    <Compile Remove="Migrations\20200703113125_add description to Borrowinh.cs" />
+    <Compile Remove="Migrations\20200703113125_add description to Borrowinh.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

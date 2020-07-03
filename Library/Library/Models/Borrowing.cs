@@ -27,5 +27,8 @@ namespace Library.Models
 
         [Display(Name = "End Date"), DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
+
+        [StringLength(500)]
+        public string Description { get; set; }
     }
 }

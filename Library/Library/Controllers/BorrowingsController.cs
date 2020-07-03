@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Library.Data;
 using Library.Models;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Library.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class BorrowingsController : Controller
     {
         private readonly LibraryContext _context;
@@ -52,8 +55,28 @@ namespace Library.Controllers
             Borrowing borrowing = new Borrowing();
             borrowing.StartDate = DateTime.Now;
             borrowing.MaxDate = DateTime.Now.AddDays(30);
-            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id");
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "UserName");
+
+            var AllBooks = _context.Book.Include(b => b.Borrowing);
+
+            List<Book> books = new List<Book>();
+
+            foreach(Book b in AllBooks) {
+                if (b.Borrowing.Any())
+                {
+                    if (b.Borrowing.Last().EndDate != null)
+                    {
+                        books.Add(b);
+                    }
+                }
+                else {
+                    books.Add(b);
+                }
+               
+            }
+
+         
+            ViewData["BookId"] = new SelectList(books, "Id", "Title");
             return View(borrowing);
         }
 
@@ -62,7 +85,7 @@ namespace Library.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate,EndDate")] Borrowing borrowing)
+        public async Task<IActionResult> Create([Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate,EndDate, Description")] Borrowing borrowing)
         {
             if (ModelState.IsValid)
             {
@@ -70,8 +93,8 @@ namespace Library.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", borrowing.ApplicationUserId);
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id", borrowing.BookId);
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "UserName");
+            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Title");
             return View(borrowing);
         }
 
@@ -88,8 +111,8 @@ namespace Library.Controllers
             {
                 return NotFound();
             }
-            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", borrowing.ApplicationUserId);
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id", borrowing.BookId);
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "UserName", borrowing.ApplicationUserId);
+            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Title", borrowing.BookId);
             return View(borrowing);
         }
 
@@ -98,7 +121,7 @@ namespace Library.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate,EndDate")] Borrowing borrowing)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BookId,ApplicationUserId,StartDate,MaxDate,EndDate, Description")] Borrowing borrowing)
         {
             if (id != borrowing.Id)
             {
@@ -125,8 +148,8 @@ namespace Library.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id", borrowing.ApplicationUserId);
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id", borrowing.BookId);
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "UserName", borrowing.ApplicationUserId);
+            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Title", borrowing.BookId);
             return View(borrowing);
         }
 
