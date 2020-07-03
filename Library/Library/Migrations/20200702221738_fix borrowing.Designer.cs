@@ -4,14 +4,16 @@ using Library.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20200702221738_fix borrowing")]
+    partial class fixborrowing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,7 +111,7 @@ namespace Library.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.com",
                             NormalizedUserName = "admin@admin.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHLJpxmorRP1GKMGTgINQV2/oRFjev7W0pThddHqDIARn0IOMy6JSTBI0budtxU4fg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKxslFnMH+6yDKFV4wLKPCj1+wUnPF3Wy8Pa1sc6/K70g/CzXGBrcnn4kw+e8wUeSQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "VVPCRDAS3MJWQD5CSW2GWPRADBXEZINA",
                             TwoFactorEnabled = false,
@@ -156,10 +158,6 @@ namespace Library.Migrations
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500);
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
@@ -209,7 +207,7 @@ namespace Library.Migrations
                         new
                         {
                             Id = "b4280b6a-0613-4cbd-a9e6-f1701e926e73",
-                            ConcurrencyStamp = "54664eff-9c52-4566-a6d9-a685407e8470",
+                            ConcurrencyStamp = "4924a3e5-b7cf-4c41-b0c3-76e09ccd0a05",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });

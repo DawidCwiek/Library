@@ -50,8 +50,17 @@ namespace Library.Data
             });
 
             builder.Entity<Borrowing>()
-                .HasKey(b => new { b.BookId, b.ApplicationUserId });
+             .HasOne(sa => sa.ApplicationUser)
+             .WithMany(a => a.Borrowing)
+             .HasForeignKey(sa => sa.ApplicationUserId);
+
+            builder.Entity<Borrowing>()
+             .HasOne(sa => sa.Book)
+             .WithMany(a => a.Borrowing)
+             .HasForeignKey(sa => sa.BookId);
         }
+
+           
 
         public DbSet<Book> Book { get; set; }
         public DbSet<Borrowing> Borrowing { get; set; }
