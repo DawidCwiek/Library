@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Books</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,23 +21,23 @@
             }
 </p>
     <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Author)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PublishingHouse)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReleaseDate)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.Title)
+				</th>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.Author)
+				</th>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.PublishingHouse)
+				</th>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.ReleaseDate)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
         <tbody>
             @foreach (var item in Model)
             {

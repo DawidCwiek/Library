@@ -4,30 +4,30 @@
     ViewData["Title"] = "UsersBorrowing";
 }
 
-<h1>UsersBorrowing</h1>
+<h1>Your borrowings</h1>
 
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaxDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.Book)
+			</th>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.ApplicationUser)
+			</th>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.StartDate)
+			</th>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.MaxDate)
+			</th>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.EndDate)
+			</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
     <tbody>
         @foreach (var item in Model)
         {
