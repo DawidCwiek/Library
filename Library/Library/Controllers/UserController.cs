@@ -34,6 +34,25 @@ namespace Library.Controllers
             return View(users_borrowing.ToList());
         }
 
-        
+
+        [Authorize]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var borrowing = await _context.Borrowing
+                .Include(b => b.ApplicationUser)
+                .Include(b => b.Book)
+                .FirstOrDefaultAsync(m => m.Id == id && m.ApplicationUser.UserName == User.Identity.Name);
+            if (borrowing == null)
+            {
+                return NotFound();
+            }
+
+            return View(borrowing);
+        }
     }
 }
