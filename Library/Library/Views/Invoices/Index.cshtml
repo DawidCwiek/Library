@@ -11,14 +11,14 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FileName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">
+				@Html.DisplayNameFor(model => model.FileName)
+			</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
