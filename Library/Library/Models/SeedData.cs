@@ -27,23 +27,23 @@ namespace Library.Models
                         {
                             Title = "Czysty kod. Podręcznik dobrego programisty",
                             Author = "Robert C. Martin",
-                            PublishingHouse = "Wydawnictwo Helion",
-                            ReleaseDate = DateTime.Parse("2014-15-10"),
+                            PublishingHouse = "Helion",
+                            ReleaseDate = DateTime.Parse("2014-10-15"),
 
                         },
                         new Book
                         {
                             Title = "Czysty kod w Pythonie",
                             Author = "Kapil Sunil",
-                            PublishingHouse = "Wydawnictwo Helion",
-                            ReleaseDate = DateTime.Parse("2020-12-05"),
+                            PublishingHouse = "Helion",
+                            ReleaseDate = DateTime.Parse("2020-05-12"),
 
                         },
                         new Book
                         {
                             Title = "Python. Leksykon kieszonkowy",
                             Author = "Lutz Mark",
-                            PublishingHouse = "Wydawnictwo Helion",
+                            PublishingHouse = "Helion",
                             ReleaseDate = DateTime.Parse("2019-08-08"),
 
                         },
@@ -51,15 +51,15 @@ namespace Library.Models
                         {
                             Title = "Linux. Komendy i polecenia",
                             Author = "Sosna Łukasz",
-                            PublishingHouse = "Wydawnictwo Helion",
-                            ReleaseDate = DateTime.Parse("2018-29-08"),
+                            PublishingHouse = "Helion",
+                            ReleaseDate = DateTime.Parse("2018-08-29"),
                         },
                         new Book
                         {
                             Title = "Język Python dla nastolatków. Zabawa w programowanie",
                             Author = "Wiszniewski Michał",
-                            PublishingHouse = "Wydawnictwo Helion",
-                            ReleaseDate = DateTime.Parse("2017-14-04"),
+                            PublishingHouse = "Helion",
+                            ReleaseDate = DateTime.Parse("2017-04-14"),
 
                         },
                         new Book
@@ -67,7 +67,7 @@ namespace Library.Models
                             Title = "Personal Cybersecurity",
                             Author = "Marvin Waschke",
                             PublishingHouse = "Apress",
-                            ReleaseDate = DateTime.Parse("2018-14-07"),
+                            ReleaseDate = DateTime.Parse("2018-07-14"),
 
                         },
                         new Book
@@ -90,7 +90,7 @@ namespace Library.Models
                         {
                             Title = "Hello! Raspberry Pi",
                             Author = "Ryan Heitz",
-                            PublishingHouse = "Manning Publications",
+                            PublishingHouse = "Manning",
                             ReleaseDate = DateTime.Parse("2019-01-12"),
 
                         },
@@ -98,7 +98,7 @@ namespace Library.Models
                         {
                             Title = "Get Programming with Python in Motion",
                             Author = "Ana Bell",
-                            PublishingHouse = "Manning Publications",
+                            PublishingHouse = "Manning",
                             ReleaseDate = DateTime.Parse("2018-05-08"),
 
                         },
