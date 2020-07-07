@@ -9,6 +9,7 @@ using Library.Data;
 using Library.Models;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace Library.Controllers
 {
@@ -20,6 +21,22 @@ namespace Library.Controllers
         public BorrowingsController(LibraryContext context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Statistic()
+        {
+            DateTime[] last7Days = Enumerable.Range(0, 7)
+                                    .Select(i => DateTime.Now.Date.AddDays(-i))
+                                    .ToArray();
+
+
+            Dictionary<string, int> data = new Dictionary<string, int>();
+
+            foreach (var i in last7Days) {
+                data.Add(i.ToShortDateString(), _context.Borrowing.Where(b => b.StartDate == i).Count());
+            }
+
+            return Json(data);
         }
 
         // GET: Borrowings
