@@ -9,17 +9,21 @@
 <h1>Books</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("admin"))
+    {
+        <a asp-action="Create">Create New</a>
+    }
+
     @using (Html.BeginForm())
     {
-<div class="input-group mb-3">
-    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Title" })
-    <div class="input-group-append">
-        <input class="btn btn-outline-secondary" type="submit" value="Search" />
-    </div>
-</div>
-            }
-</p>
+        <div class="input-group mb-3">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Title" })
+            <div class="input-group-append">
+                <input class="btn btn-outline-secondary" type="submit" value="Search" />
+            </div>
+        </div>
+    }
+    </p>
     <table class="table">
 		<thead class="thead-dark">
 			<tr>
