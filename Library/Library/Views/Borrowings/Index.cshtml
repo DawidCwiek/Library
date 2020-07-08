@@ -7,55 +7,106 @@
 
 <h1>Borrowings</h1>
 
+<div id="chart"></div>
+<div id="msg"></div>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-	<thead class="thead-dark">
-		<tr>
-			<th scope="col">
-				@Html.DisplayNameFor(model => model.Book)
-			</th>
-			<th scope="col">
-				@Html.DisplayNameFor(model => model.ApplicationUser)
-			</th>
-			<th scope="col">
-				@Html.DisplayNameFor(model => model.StartDate)
-			</th>
-			<th scope="col">
-				@Html.DisplayNameFor(model => model.MaxDate)
-			</th>
-			<th scope="col">
-				@Html.DisplayNameFor(model => model.EndDate)
-			</th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Book.Title)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.StartDate)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.MaxDate)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.EndDate)
-				</td>
-				<td>
-					<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-					<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-					<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-				</td>
-			</tr>
-		}
-	</tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.ApplicationUser)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.MaxDate)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUser.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'], 'callback': drawCharts});
+
+    function drawCharts() {
+         var options = {};
+    options.url = '@Url.Action("Statistic", "Borrowings")';
+    options.type = "GET";
+    options.dataType = "json";
+    options.success = function (data) {
+
+        var chartData = [
+            ['Day', 'Counter']
+        ];
+
+
+        for (const [key, value] of Object.entries(data)) {
+            chartData.push([key, parseInt(value)]);
+        }
+
+        var chartDataTable = google.visualization.arrayToDataTable(chartData);
+        var chartOptions = {
+            title: "Borrowings in this week",
+            hAxis: {
+                title: 'Counter',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Week Days'
+            }
+        };
+
+        var chart = new google.visualization.PieChart
+            (document.getElementById('chart'));
+        chart.draw(chartDataTable, chartOptions);
+
+    };
+
+    options.error = function () {
+        $("#msg").html("<h2>Error whileusing Google Charts!</h2>");
+    };
+    $.ajax(options);
+    }
+</script>
